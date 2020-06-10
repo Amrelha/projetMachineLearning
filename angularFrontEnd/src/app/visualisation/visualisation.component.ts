@@ -10,18 +10,23 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./visualisation.component.scss']
 })
 export class VisualisationComponent implements OnInit {
+  mydata = new Array();
+  numbers = new Array();
+  constructor(private httpClient: HttpClient, private http: Http) {
+    for(var i=0;i<=107;i++){
+      this.numbers.push(i);
+    }
 
-  constructor(private httpClient: HttpClient, private http: Http) { }
+  }
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels =['2006','2007','2008','2009','2010','2011','2012'];
+  public barChartLabels = this.numbers;
   public barChartType = 'line';
   public barChartLegend = true;
   public barChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+    { data: this.mydata, label: 'Confirmed cases' }
   ];
   ngOnInit(): void {
   }
@@ -32,7 +37,12 @@ export class VisualisationComponent implements OnInit {
     console.log(f);
     this.afficherClients('Morocco').subscribe(
       data => {
-        console.log(data);
+
+
+        console.log(this.mydata);
+        for(var i=0;i<=107;i++){
+          this.mydata.push(data.confirmed[i]);
+        }
       }, error => {
         console.log(error); }
     );
