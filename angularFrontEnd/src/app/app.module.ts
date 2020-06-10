@@ -17,11 +17,8 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {HttpModule} from "@angular/http";
-<<<<<<< HEAD
 import { GrapheVisualisationComponent } from './graphe-visualisation/graphe-visualisation.component';
-=======
 import { VisualisationService } from './services/visualisation.service';
->>>>>>> 63434c0c19ae6a98a3b79b527c80dadc6deb2326
 
 @NgModule({
   declarations: [
@@ -39,10 +36,6 @@ import { VisualisationService } from './services/visualisation.service';
     BrowserAnimationsModule,
     MatButtonModule,
     MDBBootstrapModule.forRoot(),
-<<<<<<< HEAD
-   
-=======
->>>>>>> 63434c0c19ae6a98a3b79b527c80dadc6deb2326
     MatInputModule,
     FormsModule,
     ChartsModule,

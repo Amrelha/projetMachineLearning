@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {Http} from '@angular/http';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {VisualisationService} from "../services/visualisation.service";
 
 @Component({
   selector: 'app-graphe-visualisation',
@@ -10,17 +11,18 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./graphe-visualisation.component.scss']
 })
 export class GrapheVisualisationComponent implements OnInit {
-  totalCases: number;
-  death: number;
-  recovered: number;
-  tablo = new Array();
-  mydata = new Array();
-  mydata1 = new Array();
-  mydata2 = new Array();
-  numbers = new Array();
+  country = "Morocco";
+  totalCases: string;
+  death: string;
+  recovered: string;
+  tablo = [];
+  mydata = [];
+  mydata1 = [];
+  mydata2 = [];
+  numbers = [];
 
-  constructor(private httpClient: HttpClient, private http: Http) {
-    for(var i=0;i<=107;i++){
+  constructor(private httpClient: HttpClient, private http: Http, private service: VisualisationService) {
+    for(var i=0;i<107;i++){
       this.numbers.push(i);
     }
 
@@ -32,9 +34,7 @@ export class GrapheVisualisationComponent implements OnInit {
   public barChartLabels = this.numbers;
   public barChartType = 'line';
   public barChartLegend = true;
-  public barChartData = [
-    { data: this.mydata, label: 'Confirmed cases' }
-  ];
+  public barChartData;
 
   public barChartOptions1 = {
     scaleShowVerticalLines: false,
@@ -43,9 +43,7 @@ export class GrapheVisualisationComponent implements OnInit {
   public barChartLabels1 = this.numbers;
   public barChartType1 = 'line';
   public barChartLegend1 = true;
-  public barChartData1 = [
-    { data: this.mydata1, label: 'Recovered cases' }
-  ];
+  public barChartData1 ;
 
   public barChartOptions2 = {
     scaleShowVerticalLines: false,
@@ -54,9 +52,7 @@ export class GrapheVisualisationComponent implements OnInit {
   public barChartLabels2 = this.numbers;
   public barChartType2 = 'line';
   public barChartLegend2 = true;
-  public barChartData2 = [
-    { data: this.mydata2, label: 'Death cases' }
-  ];
+  public barChartData2 ;
   public chartColors2: Array<any> = [
     {
       backgroundColor: 'rgba(255, 65, 24, .5)',
@@ -73,78 +69,19 @@ export class GrapheVisualisationComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-  }
-  getconfirmed(pays: string) {
-    return this.http.get('http://127.0.0.1:5000/visualisation/confirmed/' + pays).pipe(map(resp => resp.json()));
-  }
-  getrecovered(pays: string) {
-    return this.http.get('http://127.0.0.1:5000/visualisation/recovered/' + pays).pipe(map(resp => resp.json()));
-  }
-  getdeath(pays: string) {
-    return this.http.get('http://127.0.0.1:5000/visualisation/death/' + pays).pipe(map(resp => resp.json()));
+    this.loadData();
   }
 
-  getStati(pays: string) {
-    return this.http.get('http://127.0.0.1:5000/visualisation/newdata/' + pays).pipe(map(resp => resp.json()));
-  }
   onSubmit(f: NgForm) {
-    console.log(f.value.name);
-    this.getconfirmed(f.value.name).subscribe(
-      data => {
-        console.log(this.mydata);
-        for(var i=0;i<=107;i++){
-          this.mydata.push(data.confirmed[i]);
-        }
-      }, error => {
-        console.log(error); }
-    );
-    this.getrecovered(f.value.name).subscribe(
-      data => {
-        console.log(data);
-        for(var i=0;i<=107;i++){
-          this.mydata1.push(data.recovered[i]);
-        }
-      }, error => {
-        console.log(error); }
-    );
-    this.getdeath(f.value.name).subscribe(
-      data => {
-        console.log(data);
-        for(var i=0;i<=107;i++){
-          this.mydata2.push(data.deaths[i]);
-        }
-      }, error => {
-        console.log(error); }
-    );
-
-    this.getStati(f.value.name).subscribe(
-      data => {
-        console.log(data);
-        this.totalCases = data.totalCases;
-        this.death = data.death;
-        this.recovered = data.recovered;
-        this.tablo.push(Number(data.death.toString().replace(".","")));
-        this.tablo.push(Number(data.totalCases.toString().replace(".","")));
-        this.tablo.push(Number(data.recovered.toString().replace(".","")));
-        console.log(this.tablo);
-      }, error => {
-        console.log(error); }
-    );
-
-
-
+    this.loadData();
   }
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
 
 
-
-
   public chartType: string = 'pie';
 
-  public chartDatasets: Array<any> = [
-    { data: this.tablo, label: 'My First dataset' }
-  ];
+  public chartDatasets: Array<any> ;
 
   public chartLabels: Array<any> = ['Décès', 'Confirmés', 'Guérisons'];
 
@@ -159,4 +96,67 @@ export class GrapheVisualisationComponent implements OnInit {
   public chartOptions: any = {
     responsive: true
   };
+
+loadData(){
+  this.mydata = [];
+  this.mydata1 = [];
+  this.mydata2 = [];
+  this.tablo = [];
+  console.log(this.country);
+  this.service.getConfirmedCases(this.country).subscribe(
+    data => {
+      console.log(this.mydata);
+      for(var i=0;i<107;i++){
+        this.mydata.push(data.confirmed[i]);
+      }
+      this.barChartData = [
+        { data: this.mydata, label: 'Confirmed cases' }
+      ];
+    }, error => {
+      console.log(error); }
+  );
+  this.service.getRecovered(this.country).subscribe(
+    data => {
+      console.log(data);
+      for(var i=0;i<107;i++){
+        this.mydata1.push(data.recovered[i]);
+      }
+      this.barChartData1 = [
+        { data: this.mydata1, label: 'Recovered cases' }
+      ];
+    }, error => {
+      console.log(error); }
+  );
+  this.service.getDeath(this.country).subscribe(
+    data => {
+      console.log(data);
+      for(var i=0;i<107;i++){
+        this.mydata2.push(data.deaths[i]);
+      }
+      this.barChartData2 = [
+        { data: this.mydata2, label: 'Death cases' }
+      ];
+    }, error => {
+      console.log(error); }
+  );
+
+  this.service.getStatistique(this.country).subscribe(
+    data => {
+      console.log(data);
+      this.totalCases = data.totalCases;
+      this.death = data.death;
+      this.recovered = data.recovered;
+
+      this.tablo.push(Number(data.death.toString().replace(".","")));
+      this.tablo.push(Number(data.totalCases.toString().replace(".","")));
+      this.tablo.push(Number(data.recovered.toString().replace(".","")));
+      console.log(this.tablo);
+      this.chartDatasets = [
+        { data: this.tablo, label: 'My First dataset' }
+      ];
+    }, error => {
+      console.log(error); }
+  );
+
+}
 }
