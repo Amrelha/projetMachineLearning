@@ -3,7 +3,8 @@ from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen, Request
 from flask import jsonify
 #change the url
-url =r"C:\Users\lanfouf\Desktop\issamML\projetMachineLearning\Data\countries-aggregated.csv"
+#url ="C:\Users\lanfouf\Desktop\issamML\projetMachineLearning\Data\countries-aggregated.csv"
+url="C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
 dataset = pd.read_csv(url)
 
 # typeofdata : Confirmed, Recovered, Deaths

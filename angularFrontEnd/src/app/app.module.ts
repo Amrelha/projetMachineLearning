@@ -10,20 +10,26 @@ import { AnalyseSentimentComponent } from './analyse-sentiment/analyse-sentiment
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ChartsModule } from 'ng2-charts';
+import { ComparaisonComponent } from './comparaison/comparaison.component';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     VisualisationComponent,
     PredictComponent,
-    AnalyseSentimentComponent
+    AnalyseSentimentComponent,
+    ComparaisonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    ChartsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
