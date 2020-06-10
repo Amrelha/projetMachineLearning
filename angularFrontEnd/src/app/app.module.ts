@@ -13,6 +13,11 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ChartsModule } from 'ng2-charts';
 import { ComparaisonComponent } from './comparaison/comparaison.component';
 import {MatInputModule} from '@angular/material/input';
+
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {HttpModule} from "@angular/http";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +33,13 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     MatButtonModule,
     MDBBootstrapModule.forRoot(),
-    ChartsModule,
+   
     MatInputModule
+    FormsModule,
+    ChartsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
