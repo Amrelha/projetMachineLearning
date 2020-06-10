@@ -9,7 +9,11 @@ import { PredictComponent } from './predict/predict.component';
 import { AnalyseSentimentComponent } from './analyse-sentiment/analyse-sentiment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule} from 'angular-bootstrap-md';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {HttpModule} from "@angular/http";
+import {ChartsModule} from "ng2-charts";
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +27,12 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    FormsModule,
+    ChartsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

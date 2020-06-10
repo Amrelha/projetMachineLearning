@@ -1,14 +1,47 @@
-<p>visualisation works!</p>
-<div class="example-button-row">
-    <button mat-button>Basic</button>
-    <button mat-button color="primary">Primary</button>
-    <button mat-button color="accent">Accent</button>
-    <button mat-button color="warn">Warn</button>
-    <button mat-button disabled>Disabled</button>
-    <a mat-button href="https://www.google.com/" target="_blank">Link</a>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6" scr>
+      <div class="d-inline-flex p-2 col-example">
+        <!-- Material column sizing form -->
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-7">
+              <!-- Material input -->
+              <div class="md-form">
+                <input type="text" class="form-control"  name="name" ngModel placeholder="pays">
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col">
+              <!-- Material input -->
+              <div class="md-form">
+                <button type="submit" class="btn btn-primary btn-md">Chercher</button>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </form>
+        <!-- Material column sizing form -->
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="chart-container" style="display: block">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
 </div>
-<button mat-raised-button color="accent">Accent</button>
-
-<button type="button" mdbBtn color="danger" mdbWavesEffect>Danger</button>
-
-<button type="button" class="btn btn-primary">Primary</button>
