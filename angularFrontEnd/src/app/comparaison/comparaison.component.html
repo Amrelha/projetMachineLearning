@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="container top">
         <div class="row">
                 <div class="col">
@@ -20,7 +20,44 @@
                 <div class="col">
                         <button mat-stroked-button>compare</button>
                 </div>
+        </div> -->
+        
+     <!--    <div class="chart-container" style="display: block">
+                <canvas baseChart 
+                        [datasets]="chartData"
+                        [labels]="chartLabels"
+                        [options]="chartOptions"
+                        [legend]="chartLegend"
+                        [chartType]="chartType">
+                </canvas>
+        </div> -->
+   
+<!-- </div> -->
+
+<div class="container">
+        <form [formGroup]="formGroup">
+                        <mat-form-field class="example-full-width">
+                                        <mat-label>Country Name 1</mat-label>
+                                        <input matInput placeholder="Morocco" formControlName="country1">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                                        <mat-label>Country Name 2</mat-label>
+                                        <input matInput placeholder="Algeria" formControlName="country2">
+                        </mat-form-field>
+                <button type="submit" [disabled]="!formGroup.valid" (click)="onSubmit()" mat-stroked-button>compare</button>
+                
+        </form>
+
+        <div class="chart-container" style="display: block">
+                        <canvas baseChart 
+                                [datasets]="chartData"
+                                [labels]="chartLabels"
+                                [options]="chartOptions"
+                                [legend]="chartLegend"
+                                [chartType]="chartType">
+                        </canvas>
         </div>
 
-   
+
 </div>
+

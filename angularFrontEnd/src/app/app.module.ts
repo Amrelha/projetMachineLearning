@@ -17,6 +17,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {HttpModule} from "@angular/http";
+import { VisualisationService } from './services/visualisation.service';
 
 @NgModule({
   declarations: [
@@ -33,15 +34,14 @@ import {HttpModule} from "@angular/http";
     BrowserAnimationsModule,
     MatButtonModule,
     MDBBootstrapModule.forRoot(),
-   
-    MatInputModule
+    MatInputModule,
     FormsModule,
     ChartsModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule
   ],
-  providers: [],
+  providers: [VisualisationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
