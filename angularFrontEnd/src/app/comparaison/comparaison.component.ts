@@ -9,8 +9,8 @@ import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ComparaisonComponent implements OnInit {
 
-  private country1 = "Morocco";
-  private country2 = "Algeria";
+  public country1 = "Morocco";
+  public country2 = "Algeria";
   public formGroup: FormGroup;
   public labels = new Array();
   public chartLabels = this.labels;
