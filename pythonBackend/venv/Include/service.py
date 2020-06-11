@@ -5,6 +5,7 @@ from flask_cors import CORS,cross_origin
 app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 # Visualisation service part
+
 @app.route('/visualisation/confirmed/<string:country>')
 @cross_origin()
 def confirmedCases(country):
@@ -32,7 +33,11 @@ def maxofall(country):
 def NewData(country):
     array = dataEx.getNewData(country)
     return jsonify({"totalCases" :array[0], "death" :array[1], "recovered" :array[2]})
-
+@app.route('/visualisation/StatistiqueMonde')
+@cross_origin()
+def StatistiqueMonde():
+    array = dataEx.getStatistiqueMonde()
+    return jsonify({"totalCases" :array[0], "death" :array[1], "recovered" :array[2]})
 
 if __name__ == "__main__":
     app.run(debug=True)

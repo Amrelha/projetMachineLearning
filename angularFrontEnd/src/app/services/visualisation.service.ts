@@ -22,12 +22,11 @@ export class VisualisationService {
   }
   getDeathCases(pays: string) {
     return this.http.get('http://127.0.0.1:5000/visualisation/death/' + pays).pipe(map(resp => resp.json()));
-  
-    
- 
   }
   getRecoveredCases(pays: string) {
     return this.http.get('http://127.0.0.1:5000/visualisation/recovered/' + pays).pipe(map(resp => resp.json()));
- 
+  }
+  StatistiqueMonde(){
+    return this.http.get('http://127.0.0.1:5000/visualisation/StatistiqueMonde').pipe(map(resp => resp.json()));
   }
 }

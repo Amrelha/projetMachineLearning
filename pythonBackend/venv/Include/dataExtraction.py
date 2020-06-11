@@ -41,6 +41,25 @@ def getNewData(country):
         data2.append(data1[i].replace(",", "."))
 
     return data2
+def getStatistiqueMonde():
+    url = "https://www.worldometers.info/coronavirus"
+    req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    page_byte = urlopen(req).read()
+    webpage = page_byte.decode('utf-8')
+    page_soupe = soup(webpage, "html.parser")
+    containers = page_soupe.findAll("div", {"class": "maincounter-number"})
+    data = []
+    data1 = []
+    data2 = []
+    for i in range(0, 3):
+        data.append(containers[i].span.text)
+    for i in range(3):
+        data1.append(data[i].strip())
+
+    for i in range(0, 3):
+        data2.append(data1[i].replace(",", "."))
+    return data2
 
 if __name__ == "__main__":
     getNewData("morocco")
+    getStatistiqueMonde()

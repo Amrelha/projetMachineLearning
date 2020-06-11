@@ -1,0 +1,41 @@
+<mdb-carousel [animation]="'slide'">
+  <mdb-carousel-item>
+    <img class="d-block w-100" style="max-height: 500px" src="assets/images/eng-mythbusting-ncov-(23).png" alt="First slide">
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img class="d-block w-100" style="max-height: 500px" src="assets/images/eng-mythbusting-ncov-(13).png" alt="Second slide">
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img class="d-block w-100" style="max-height: 500px" src="assets/images/eng-mythbusting-ncov-(19).png" alt="Second slide">
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img class="d-block w-100" style="max-height: 500px" src="assets/images/eng-mythbusting-ncov-(30).png" alt="Second slide">
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img class="d-block w-100" style="max-height: 500px" src="assets/images/eng-mythbusting-ncov-(33).png" alt="Second slide">
+  </mdb-carousel-item>
+</mdb-carousel>
+<br>
+<br>
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4" style="text-align: center;font-weight: bold">The World Wide Covid-19 statistics</h1>
+      <hr>
+      <table style="width:100%">
+        <tr>
+          <th>Confirmed</th>
+          <th>Deaths</th>
+          <th>Recovered</th>
+        </tr>
+        <tr>
+          <td>{{totalCases}}</td>
+          <td>{{death}}</td>
+          <td>{{recovered}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
