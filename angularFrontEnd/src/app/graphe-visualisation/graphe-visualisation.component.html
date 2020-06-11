@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6" scr>
+      <div class="d-inline-flex p-2 col-example">
+        <!-- Material column sizing form -->
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-7">
+              <!-- Material input -->
+              <div class="md-form">
+                <input type="text" class="form-control" [(ngModel)]="country"  name="name"  placeholder="Pays">
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col">
+              <!-- Material input -->
+              <div class="md-form">
+                <button type="submit" class="btn btn-primary btn-md">Chercher</button>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </form>
+        <!-- Material column sizing form -->
+      </div>
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="chart-container" style="display: block">
+        <canvas baseChart *ngIf="mydata.length!=0"
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card" *ngIf="death">
+        <h5 class="card-header" style="text-align: center;font-weight: bold">Vue d'ensemble des cas</h5>
+        <div class="card-body">
+          <table style="width:100%">
+            <tr>
+              <th>Confirmés</th>
+              <th>Guérisons</th>
+              <th>Décès</th>
+            </tr>
+            <tr>
+              <td>{{totalCases}}</td>
+              <td>{{recovered}}</td>
+              <td>{{death}}</td>
+            </tr>
+          </table>
+          <hr>
+          <div style="display: block">
+            <canvas mdbChart
+                    [chartType]="chartType"
+                    [datasets]="chartDatasets"
+                    [labels]="chartLabels"
+                    [colors]="chartColors"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="chart-container" style="display: block">
+        <canvas baseChart *ngIf="mydata1.length!=0"
+                [datasets]="barChartData1"
+                [labels]="barChartLabels1"
+                [options]="barChartOptions1"
+                [legend]="barChartLegend1"
+                [chartType]="barChartType1"
+                [colors]="chartColors1">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="chart-container" style="display: block">
+        <canvas baseChart *ngIf="mydata2.length!=0"
+                [datasets]="barChartData2"
+                [labels]="barChartLabels2"
+                [options]="barChartOptions2"
+                [legend]="barChartLegend2"
+                [chartType]="barChartType2"
+                [colors]="chartColors2">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
+

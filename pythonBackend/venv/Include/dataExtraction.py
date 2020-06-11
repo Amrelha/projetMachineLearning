@@ -3,8 +3,10 @@ from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen, Request
 from flask import jsonify
 #change the url
-#url ="C:\Users\lanfouf\Desktop\issamML\projetMachineLearning\Data\countries-aggregated.csv"
-url=r"C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
+
+url =r"C:\Users\lanfouf\Desktop\issamML\projetMachineLearning\Data\countries-aggregated.csv"
+#url="C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
+
 dataset = pd.read_csv(url)
 
 # typeofdata : Confirmed, Recovered, Deaths
@@ -28,9 +30,17 @@ def getNewData(country):
     page_soupe = soup(webpage, "html.parser")
     containers = page_soupe.findAll("div", {"class": "maincounter-number"})
     data = []
+    data1 = []
+    data2 = []
     for i in range(0, 3):
         data.append(containers[i].span.text)
-    return data
+    for i in range(3):
+        data1.append(data[i].strip())
+
+    for i in range(0, 3):
+        data2.append(data1[i].replace(",", "."))
+
+    return data2
 
 if __name__ == "__main__":
     getNewData("morocco")

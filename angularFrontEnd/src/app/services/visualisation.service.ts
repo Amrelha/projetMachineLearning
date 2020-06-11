@@ -10,7 +10,15 @@ export class VisualisationService {
 
   getConfirmedCases(pays: string) {
     return this.http.get('http://127.0.0.1:5000/visualisation/confirmed/' + pays).pipe(map(resp => resp.json()));
- 
+  }
+  getRecovered(pays: string) {
+    return this.http.get('http://127.0.0.1:5000/visualisation/recovered/' + pays).pipe(map(resp => resp.json()));
+  }
+  getDeath(pays: string) {
+    return this.http.get('http://127.0.0.1:5000/visualisation/death/' + pays).pipe(map(resp => resp.json()));
+  }
+  getStatistique(pays: string) {
+    return this.http.get('http://127.0.0.1:5000/visualisation/newdata/' + pays).pipe(map(resp => resp.json()));
   }
   getDeathCases(pays: string) {
     return this.http.get('http://127.0.0.1:5000/visualisation/death/' + pays).pipe(map(resp => resp.json()));

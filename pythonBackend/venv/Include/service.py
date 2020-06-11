@@ -31,7 +31,7 @@ def maxofall(country):
 @cross_origin()
 def NewData(country):
     array = dataEx.getNewData(country)
-    return jsonify({"totalCases" : array[0], "death" : array[1], "recovered" : array[2]})
+    return jsonify({"totalCases" :array[0], "death" :array[1], "recovered" :array[2]})
 
 
 if __name__ == "__main__":

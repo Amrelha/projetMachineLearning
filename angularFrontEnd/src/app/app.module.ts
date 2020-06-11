@@ -17,6 +17,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {HttpModule} from "@angular/http";
+import { GrapheVisualisationComponent } from './graphe-visualisation/graphe-visualisation.component';
 import { VisualisationService } from './services/visualisation.service';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { VisualisationService } from './services/visualisation.service';
     VisualisationComponent,
     PredictComponent,
     AnalyseSentimentComponent,
-    ComparaisonComponent
+    ComparaisonComponent,
+    GrapheVisualisationComponent
   ],
   imports: [
     BrowserModule,
