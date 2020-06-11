@@ -1,38 +1,3 @@
-<!-- 
-<div class="container top">
-        <div class="row">
-                <div class="col">
-                        <form class="example-form">
-                                <mat-form-field class="example-full-width">
-                                  <mat-label>Country Name 1</mat-label>
-                                  <input matInput placeholder="Morocco">
-                                 </mat-form-field>
-                        </form>
-                </div>
-                <div class="col">
-                        <form class="example-form">
-                                <mat-form-field class="example-full-width">
-                                  <mat-label>Country Name 2</mat-label>
-                                  <input matInput placeholder="Algeria">
-                                 </mat-form-field>
-                        </form>
-                </div>
-                <div class="col">
-                        <button mat-stroked-button>compare</button>
-                </div>
-        </div> -->
-        
-     <!--    <div class="chart-container" style="display: block">
-                <canvas baseChart 
-                        [datasets]="chartData"
-                        [labels]="chartLabels"
-                        [options]="chartOptions"
-                        [legend]="chartLegend"
-                        [chartType]="chartType">
-                </canvas>
-        </div> -->
-   
-<!-- </div> -->
 
 <div class="container">
         <form [formGroup]="formGroup">
@@ -50,12 +15,31 @@
 
         <div class="chart-container" style="display: block">
                         <canvas baseChart 
-                                [datasets]="chartData"
+                                [datasets]="chartDataConfirmed"
                                 [labels]="chartLabels"
                                 [options]="chartOptions"
                                 [legend]="chartLegend"
                                 [chartType]="chartType">
                         </canvas>
+        </div>
+
+        <div class="chart-container" style="display: block">
+                <canvas baseChart 
+                        [datasets]="chartDataDeath"
+                        [labels]="chartLabels"
+                        [options]="chartOptions"
+                        [legend]="chartLegend"
+                        [chartType]="chartType">
+                </canvas>
+        </div>
+        <div class="chart-container" style="display: block">
+                <canvas baseChart 
+                        [datasets]="chartDataRecovered"
+                        [labels]="chartLabels"
+                        [options]="chartOptions"
+                        [legend]="chartLegend"
+                        [chartType]="chartType">
+                </canvas>
         </div>
 
 

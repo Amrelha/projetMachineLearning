@@ -11,14 +11,14 @@ export class ComparaisonComponent implements OnInit {
 
   private country1 = "Morocco";
   private country2 = "Algeria";
-  public data1;
-  public data2;
   public formGroup: FormGroup;
   public labels = new Array();
   public chartLabels = this.labels;
   public chartType = 'line';
   public chartLegend = true;
-  public chartData;
+  public chartDataConfirmed;
+  public chartDataDeath;
+  public chartDataRecovered;
   public chartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -32,14 +32,18 @@ export class ComparaisonComponent implements OnInit {
 
   ngOnInit(): void {
     this.ngForm();
-    this.loadData(this.country1,this.country2);
+    this.loadDataConfirmed(this.country1,this.country2);
+    this.loadDataDeath(this.country1,this.country2);
+    this.loadDataRecovered(this.country1,this.country2);
   
     
   }
   onSubmit(){
     this.country1 = this.formGroup.value.country1;
     this.country2 = this.formGroup.value.country2;
-    this.loadData(this.country1,this.country2);
+    this.loadDataConfirmed(this.country1,this.country2);
+    this.loadDataDeath(this.country1,this.country2);
+    this.loadDataRecovered(this.country1,this.country2);
   }
 
   ngForm(){
@@ -48,27 +52,76 @@ export class ComparaisonComponent implements OnInit {
       country2: ['', Validators.compose([Validators.required, Validators.pattern('^[A-Z]+[a-zA-Z]*')])]
     });
   }
-  loadData(country1, country2){
-    this.data1 = new Array();
-    this.data2 = new Array();
+
+  loadDataConfirmed(country1, country2){
+    var data1 = new Array();
+    var data2 = new Array();
+
+
     this.service.getConfirmedCases(country1).subscribe(
       data => {
         for (let i = 0; i < 107; i++) {
-            this.data1.push(data.confirmed[i]);
+            data1.push(data.confirmed[i]);
         }
-        console.log("data1",this.data1);
+        console.log("data1",data1);
       });
       this.service.getConfirmedCases(country2).subscribe(
         data => {
           for (let i = 0; i < 107; i++) {
-            this.data2.push(data.confirmed[i]);
+            data2.push(data.confirmed[i]);
         }
-        console.log("data2",this.data2)
+        console.log("data2",data2)
         });
-        this.chartData = [
-          { data: this.data1, label: 'Confirmed cases of '+this.country1 },
-          { data: this.data2, label: 'Confirmed cases of '+this.country2 }
+        this.chartDataConfirmed = [
+          { data: data1, label: 'Confirmed cases of '+this.country1 },
+          { data: data2, label: 'Confirmed cases of '+this.country2 }
         ];
+      
   }
+  loadDataDeath(country1, country2){
+    var data1 = new Array();
+    var data2 = new Array();
+    this.service.getDeathCases(country1).subscribe(
+      data => {
+        for (let i = 0; i < 107; i++) {
+            data1.push(data.deaths[i]);
+        }
+        console.log("data1",data1);
+      });
+      this.service.getDeathCases(country2).subscribe(
+        data => {
+          for (let i = 0; i < 107; i++) {
+            data2.push(data.deaths[i]);
+        }
+        console.log("data2",data2)
+        });
+    this.chartDataDeath = [
+      { data: data1, label: 'Death cases of '+this.country1 },
+      { data: data2, label: 'Death cases of '+this.country2 }
+    ];
+  }
+  loadDataRecovered(country1, country2){
+    var data1 = new Array();
+    var data2 = new Array();
+    this.service.getRecoveredCases(country1).subscribe(
+      data => {
+        for (let i = 0; i < 107; i++) {
+            data1.push(data.recovered[i]);
+        }
+        console.log("data1",data1);
+      });
+      this.service.getRecoveredCases(country2).subscribe(
+        data => {
+          for (let i = 0; i < 107; i++) {
+            data2.push(data.recovered[i]);
+        }
+        console.log("data2",data2)
+        });
+    this.chartDataRecovered = [
+      { data: data1, label: 'Recovered cases of '+this.country1 },
+      { data: data2, label: 'Recovered cases of '+this.country2 }
+    ];
+  }
+
 
 }
