@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {NgForm, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Http} from '@angular/http';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
@@ -11,6 +11,7 @@ import {VisualisationService} from "../services/visualisation.service";
   styleUrls: ['./graphe-visualisation.component.scss']
 })
 export class GrapheVisualisationComponent implements OnInit {
+  public formGroup: FormGroup;
   country = "Morocco";
   totalCases: string;
   death: string;
@@ -21,7 +22,7 @@ export class GrapheVisualisationComponent implements OnInit {
   mydata2 = [];
   numbers = [];
 
-  constructor(private httpClient: HttpClient, private http: Http, private service: VisualisationService) {
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private http: Http, private service: VisualisationService) {
     for(var i=0;i<107;i++){
       this.numbers.push(i);
     }
@@ -69,12 +70,18 @@ export class GrapheVisualisationComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.ngForm();
+    this.loadData();
+    
+  }
+  onSubmit(){
+    this.country = this.formGroup.value.country;
     this.loadData();
   }
 
-  onSubmit(f: NgForm) {
+ /*  onSubmit(f: NgForm) {
     this.loadData();
-  }
+  } */
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
 
@@ -83,7 +90,7 @@ export class GrapheVisualisationComponent implements OnInit {
 
   public chartDatasets: Array<any> ;
 
-  public chartLabels: Array<any> = ['Décès', 'Confirmés', 'Guérisons'];
+  public chartLabels: Array<any> = ['Death', 'Active cases', 'Recovered'];
 
   public chartColors: Array<any> = [
     {
@@ -96,6 +103,12 @@ export class GrapheVisualisationComponent implements OnInit {
   public chartOptions: any = {
     responsive: true
   };
+
+  ngForm(){
+    this.formGroup = this.formBuilder.group({
+      country: ['', Validators.compose([Validators.required, Validators.pattern('^[A-Z]+[a-zA-Z]*')])]
+    });
+  }
 
 loadData(){
   this.mydata = [];
@@ -146,9 +159,9 @@ loadData(){
       this.totalCases = data.totalCases;
       this.death = data.death;
       this.recovered = data.recovered;
-
+      
       this.tablo.push(Number(data.death.toString().replace(".","")));
-      this.tablo.push(Number(data.totalCases.toString().replace(".","")));
+      this.tablo.push(Number(data.totalCases.toString().replace(".",""))-Number(data.death.toString().replace(".",""))-Number(data.recovered.toString().replace(".","")));
       this.tablo.push(Number(data.recovered.toString().replace(".","")));
       console.log(this.tablo);
       this.chartDatasets = [
