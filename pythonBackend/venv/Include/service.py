@@ -5,6 +5,7 @@ from flask_cors import CORS,cross_origin
 app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 # Visualisation service part
+
 @app.route('/visualisation/confirmed/<string:country>')
 @cross_origin()
 def confirmedCases(country):
