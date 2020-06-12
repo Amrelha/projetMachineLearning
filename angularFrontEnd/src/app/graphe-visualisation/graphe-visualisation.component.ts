@@ -12,6 +12,7 @@ import {VisualisationService} from "../services/visualisation.service";
 })
 export class GrapheVisualisationComponent implements OnInit {
   public formGroup: FormGroup;
+  public lastUpdate = ""
   country = "Morocco";
   totalCases: string;
   death: string;
@@ -159,7 +160,7 @@ loadData(){
       this.totalCases = data.totalCases;
       this.death = data.death;
       this.recovered = data.recovered;
-      
+      this.lastUpdate = data.lastUpdate;
       this.tablo.push(Number(data.death.toString().replace(".","")));
       this.tablo.push(Number(data.totalCases.toString().replace(".",""))-Number(data.death.toString().replace(".",""))-Number(data.recovered.toString().replace(".","")));
       this.tablo.push(Number(data.recovered.toString().replace(".","")));
