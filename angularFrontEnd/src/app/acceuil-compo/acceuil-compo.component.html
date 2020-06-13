@@ -37,5 +37,44 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card" *ngIf="death">
+        <h5 class="card-header" style="text-align: center;font-weight: bold"><span class="title3"> Case breakdown by Region </span><span class="lastUpdate">{{update}}</span></h5>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Regions</th>
+              <th scope="col">Total Cases</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let r of regions;let index = index">
+              <td>{{r}}</td>
+              <td>{{affectedNum[index]}}</td>
 
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div style="display: block">
+        <canvas mdbChart
+                [chartType]="chartType"
+                [datasets]="chartDatasets"
+                [labels]="chartLabels"
+                [colors]="chartColors"
+                [options]="chartOptions"
+                [legend]="true"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
 

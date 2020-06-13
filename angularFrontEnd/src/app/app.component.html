@@ -66,13 +66,17 @@
             </div>
                 <ul class="navigation">
                     <a href=""><li>Info</li></a>
-                    <a href=""><li>Visualisations</li></a>
+                    <a routerLink="visualisation"><li>Visualisations</li></a>
                     <a href=""><li>Clustering</li></a>
-                    <a href=""><li>Sentiment analytics</li></a>
+                    <a routerLink="sentimentAnalytics"><li>Sentiment analytics</li></a>
                 </ul>
 
         </div>
     </div>
 </div>
 <!--<app-visualisation></app-visualisation>-->
-<app-acceuil-compo></app-acceuil-compo>
+
+<!--<app-acceuil-compo></app-acceuil-compo>-->
+
+<!-- <app-visualisation></app-visualisation> -->
+<router-outlet></router-outlet>

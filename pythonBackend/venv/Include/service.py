@@ -31,13 +31,20 @@ def maxofall(country):
 @app.route('/visualisation/newdata/<string:country>')
 @cross_origin()
 def NewData(country):
-    array = dataEx.getNewData(country)
-    return jsonify({"totalCases" :array[0], "death" :array[1], "recovered" :array[2]})
+    array = dataEx.getNewData(country)[0]
+    lastUpdate = dataEx.getNewData(country)[1]
+    return jsonify({"totalCases" :array[0], "death" :array[1], "recovered" :array[2], "lastUpdate" :lastUpdate})
+@app.route('/visualisation/regionsData')
+@cross_origin()
+def dataByregion():
+    array = dataEx.getRegionsData()
+    return jsonify({"regions":array[0], "affectedNum": array[1], "update": array[2], "somme":array[3]})
+
 @app.route('/visualisation/StatistiqueMonde')
 @cross_origin()
-def StatistiqueMonde():
+def getStatistiqueMonde():
     array = dataEx.getStatistiqueMonde()
-    return jsonify({"totalCases" :array[0], "death" :array[1], "recovered" :array[2]})
+    return jsonify({"totalCases": array[0], "death": array[1], "recovered": array[2]})
 
 if __name__ == "__main__":
     app.run(debug=True)

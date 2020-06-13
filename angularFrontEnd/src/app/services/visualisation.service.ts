@@ -29,4 +29,7 @@ export class VisualisationService {
   StatistiqueMonde(){
     return this.http.get('http://127.0.0.1:5000/visualisation/StatistiqueMonde').pipe(map(resp => resp.json()));
   }
+  dataByregion(){
+    return this.http.get('http://127.0.0.1:5000/visualisation/regionsData').pipe(map(resp => resp.json()));
+  }
 }
