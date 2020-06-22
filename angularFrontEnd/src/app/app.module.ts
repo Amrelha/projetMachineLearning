@@ -20,6 +20,7 @@ import {HttpModule} from "@angular/http";
 import { GrapheVisualisationComponent } from './graphe-visualisation/graphe-visualisation.component';
 import { VisualisationService } from './services/visualisation.service';
 import { AcceuilCompoComponent } from './acceuil-compo/acceuil-compo.component';
+import { PredictgraphComponent } from './predictgraph/predictgraph.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AcceuilCompoComponent } from './acceuil-compo/acceuil-compo.component';
     AnalyseSentimentComponent,
     ComparaisonComponent,
     GrapheVisualisationComponent,
-    AcceuilCompoComponent
+    AcceuilCompoComponent,
+    PredictgraphComponent
   ],
   imports: [
     BrowserModule,
