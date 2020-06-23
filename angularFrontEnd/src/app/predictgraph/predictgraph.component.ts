@@ -11,23 +11,23 @@ import {VisualisationService} from "../services/visualisation.service";
 export class PredictgraphComponent implements OnInit {
 
   constructor(private service: VisualisationService) { }
-  ngOnInit(): void {
+  ngOnInit() {
 
     this.service.getTestClusters().subscribe(
       data => {
-        console.log(this.bubbleChartData);
+        console.log(data);
         for (let i of data) {
           if(i['cluster']==1){
-            this.bubbleChartData[0]['data'].push({ x:i['x'] , y: i['y'], r: 5} );
+            (this.bubbleChartData[0]['data'] as [{ x: any; y: any; r: number; }]).push({ x:i['x'] , y: i['y'], r: 5} );
             this.bubbleChartData[0]['label']='cluster1: '+i['country'];
           }else if(i['cluster']==2){
-            this.bubbleChartData[1]['data'].push({ x:i['x'] , y: i['y'], r: 5} );
+            (this.bubbleChartData[1]['data'] as [{ x: any; y: any; r: number; }]).push({ x:i['x'] , y: i['y'], r: 5} );
             this.bubbleChartData[1]['label']='cluster2: '+i['country'];
           }else if(i['cluster']==3){
-            this.bubbleChartData[2]['data'].push({ x:i['x'] , y: i['y'], r: 5} );
+            (this.bubbleChartData[2]['data'] as [{ x: any; y: any; r: number; }]).push({ x:i['x'] , y: i['y'], r: 5} );
             this.bubbleChartData[2]['label']='cluster3: '+i['country'];
           }else{
-            this.bubbleChartData[3]['data'].push({ x:i['x'] , y: i['y'], r: 5} );
+            (this.bubbleChartData[3]['data'] as [{ x: any; y: any; r: number; }]).push({ x:i['x'] , y: i['y'], r: 5} );
             this.bubbleChartData[3]['label']='cluster4: '+i['country'];
           }
            // 1, "string", false
@@ -56,31 +56,18 @@ export class PredictgraphComponent implements OnInit {
   public bubbleChartType: ChartType = 'bubble';
   public bubbleChartLegend = true;
 
-  public bubbleChartData: ChartDataSets[] = [
+  public bubbleChartData: ChartDataSets[] =[
     {
-
-      data: [
-
-      ],
-
+      data : []
     },
     {
-      data: [
-
-      ],
-
+      data : []
     },
     {
-      data: [
-
-      ],
-
+      data : []
     },
     {
-      data: [
-
-      ],
-
+      data : []
     },
   ];
   public lineChartColors: Color[] = [

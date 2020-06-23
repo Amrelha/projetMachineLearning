@@ -9,7 +9,7 @@ import {Color} from "ng2-charts";
 })
 export class PredictComponent implements OnInit {
   constructor() { }
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
