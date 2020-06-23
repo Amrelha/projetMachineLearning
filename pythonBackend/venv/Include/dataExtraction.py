@@ -2,6 +2,7 @@ import pandas as pd
 from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen, Request
 from flask import jsonify
+from  preprocessing import clustering
 #change the url
 
 url =r"C:\Users\lanfouf\Desktop\issamML\projetMachineLearning\Data\countries-aggregated.csv"
@@ -92,5 +93,8 @@ if __name__ == "__main__":
     print(getRegionsData()[2])
     print(getRegionsData()[3])
     getStatistiqueMonde()
+    print(clustering())
+
+
 
 

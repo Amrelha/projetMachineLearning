@@ -11,5 +11,5 @@ export class PredictComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-  
+
 }
