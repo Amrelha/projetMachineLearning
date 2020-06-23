@@ -35,7 +35,7 @@ export class ComparaisonComponent implements OnInit {
     this.loadDataConfirmed(this.country1,this.country2);
     this.loadDataDeath(this.country1,this.country2);
     this.loadDataRecovered(this.country1,this.country2);
-  
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++",this.chartDataConfirmed[0]);
     
   }
   onSubmit(){
@@ -76,7 +76,6 @@ export class ComparaisonComponent implements OnInit {
           { data: data1, label: 'Confirmed cases of '+this.country1 },
           { data: data2, label: 'Confirmed cases of '+this.country2 }
         ];
-      
   }
   loadDataDeath(country1, country2){
     var data1 = new Array();
@@ -122,6 +121,8 @@ export class ComparaisonComponent implements OnInit {
       { data: data2, label: 'Recovered cases of '+this.country2 }
     ];
   }
+
+
 
 
 }

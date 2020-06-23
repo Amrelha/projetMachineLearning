@@ -46,5 +46,11 @@ def getStatistiqueMonde():
     array = dataEx.getStatistiqueMonde()
     return jsonify({"totalCases": array[0], "death": array[1], "recovered": array[2]})
 
+@app.route('/visualisation/clusterAge')
+@cross_origin()
+def getClusterAge():
+    array = dataEx.getDataClusterAge()
+    return jsonify({"countries": array[0].tolist(),"data": array[1].tolist(),"meanClusters": array[2].tolist()})
+
 if __name__ == "__main__":
     app.run(debug=True)
