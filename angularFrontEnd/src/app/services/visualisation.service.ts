@@ -34,5 +34,7 @@ export class VisualisationService {
   }
   getClusterAge(){
     return this.http.get('http://127.0.0.1:5000/visualisation/clusterAge').pipe(map(resp => resp.json()));
+  getTestClusters(){
+    return this.http.get('http://127.0.0.1:5000/predictions/testclusters').pipe(map(resp => resp.json()));
   }
 }

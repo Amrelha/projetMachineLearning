@@ -13,6 +13,11 @@ import numpy as np
 #url = r"C:\Users\lanfouf\Desktop\issamML\projetMachineLearning\Data\countries-aggregated.csv"
 url = r"C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
 urlAge = r"C:\Users\elham\Desktop\projetMachineLearning\Data\population_by_country_2020.csv"
+from  preprocessing import clustering
+#change the url
+
+
+
 dataset = pd.read_csv(url)
 datasetAge = pd.read_csv(urlAge)
 
@@ -119,6 +124,12 @@ if __name__ == "__main__":
    # print( getDataClusterAge()[1])
    # print( getDataClusterAge()[2])
 
+    print(getRegionsData()[0])
+    print(getRegionsData()[1])
+    print(getRegionsData()[2])
+    print(getRegionsData()[3])
+    getStatistiqueMonde()
+    print(clustering())
 
 
 

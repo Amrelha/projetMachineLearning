@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 import dataExtraction as dataEx
 from flask_cors import CORS,cross_origin
+from  preprocessing import clustering
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -51,6 +52,11 @@ def getStatistiqueMonde():
 def getClusterAge():
     array = dataEx.getDataClusterAge()
     return jsonify({"countries": array[0].tolist(),"data": array[1].tolist(),"meanClusters": array[2].tolist()})
+@app.route('/predictions/testclusters')
+@cross_origin()
+def getTestClusters():
+    array = clustering()
+    return jsonify(array)
 
 if __name__ == "__main__":
     app.run(debug=True)

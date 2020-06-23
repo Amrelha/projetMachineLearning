@@ -2,8 +2,11 @@ import pandas as pd
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import seaborn as sns
-urlAge = "C:/Users/elham/Desktop/S4/Maching learning/projet machine learning/population_by_country_2020.csv"
-urlEtat = "C:/Users/elham/Desktop/S4/Maching learning/projet machine learning/covid-19-master/data/countries-aggregated.csv"
+# urlAge = "C:/Users/elham/Desktop/S4/Maching learning/projet machine learning/population_by_country_2020.csv"
+# urlEtat = "C:/Users/elham/Desktop/S4/Maching learning/projet machine learning/covid-19-master/data/countries-aggregated.csv"
+
+urlAge = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\population_by_country_2020.csv"
+urlEtat = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\countries-aggregated.csv"
 
 datasetEtat = pd.read_csv(urlEtat)
 datasetEtat = datasetEtat[['Country', 'Confirmed', 'Recovered', 'Deaths']]
