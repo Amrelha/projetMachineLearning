@@ -13,6 +13,7 @@ import numpy as np
 #url = r"C:\Users\lanfouf\Desktop\issamML\projetMachineLearning\Data\countries-aggregated.csv"
 url = r"C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
 urlAge = r"C:\Users\elham\Desktop\projetMachineLearning\Data\population_by_country_2020.csv"
+urlTest = r"C:/Users/elham/Desktop/S4/Maching learning/projet machine learning/full-list-total-tests-for-covid-19.csv"
 from  preprocessing import clustering
 #change the url
 
@@ -20,6 +21,7 @@ from  preprocessing import clustering
 
 dataset = pd.read_csv(url)
 datasetAge = pd.read_csv(urlAge)
+datasetTest = pd.read_csv(urlTest)
 
 # typeofdata : Confirmed, Recovered, Deaths
 def getData(typeofdata ,countryName):#
@@ -116,20 +118,63 @@ def getDataClusterAge():
     principalDataframe = principalDataframe.assign(cluster=y_kmeans + 1)
     mean_clusters = pd.DataFrame(round(data.groupby('cluster').mean(), 1))
     countries = data.loc[:,"Country"].values
-    return countries, principalDataframe.values, mean_clusters.values
-    # return principalDataframe.values, data.loc[:,"Country"].values, mean_clusters.values
+    normilised = principalDataframe.values
+    for i in range(len(principalDataframe.values)):
+        for j in range(2):
+            normilised[i][j] = normalisationAge(principalDataframe.values[i][j])
+    normilised = pd.DataFrame(data=normilised, columns=['PC1', 'PC2','cluster'])
+    return countries, normilised.loc[:,'PC1'].values,normilised.loc[:,'PC2'].values,normilised.loc[:,'cluster'].values, mean_clusters.values
+def getDataClusterTest():
+    datasetTestLocal = datasetTest[['Entity', 'Total tests']]
+    datasetTestLocal = datasetTestLocal.rename(columns={'Entity': 'Country'})
+    datasetTestLocal = datasetTestLocal.groupby(['Country']).max()
+    datasetLocal = dataset[['Country', 'Confirmed', 'Recovered', 'Deaths']]
+    datasetLocal = datasetLocal.groupby(['Country']).max()
+    data = pd.merge(datasetLocal, datasetTestLocal, on='Country')
+    data = data.reset_index()
+    x = data.loc[:, ['Confirmed', 'Recovered', 'Deaths', 'Total tests']].values
+    x = StandardScaler().fit_transform(x)
+    pca = PCA(n_components=2)
+    np.set_printoptions(suppress=True)
+    x = pca.fit_transform(x)
+    kmeans = KMeans(n_clusters=4, init='k-means++', random_state=42)
+    y_kmeans = kmeans.fit_predict(x)
+    data = data.assign(cluster=y_kmeans + 1)
+    principalDataframe = pd.DataFrame(data=x, columns=['PC1', 'PC2'])
+    principalDataframe = principalDataframe.assign(cluster=y_kmeans + 1)
+    mean_clusters = pd.DataFrame(round(data.groupby('cluster').mean(), 1))
+    countries = data.loc[:,"Country"].values
+    normilised = principalDataframe.values
+    for i in range(len(principalDataframe.values)):
+        for j in range(2):
+            normilised[i][j] = normalisationTest(principalDataframe.values[i][j])
+    normilised = pd.DataFrame(data=normilised, columns=['PC1', 'PC2', 'cluster'])
+    return countries, normilised.loc[:, 'PC1'].values, normilised.loc[:, 'PC2'].values, normilised.loc[:,'cluster'].values, mean_clusters.values
+
+def normalisationAge(OldValue):
+    OldRange = (10 +2)
+    NewValue=0
+    if (OldRange == 0):
+        NewValue = NewMin
+    else:
+        NewRange = (30 - 5)
+        NewValue = (((OldValue +2) * NewRange) / OldRange) + 5
+    return NewValue
+def normalisationTest(OldValue):
+    OldRange = (7 +3)
+    NewValue=0
+    if (OldRange == 0):
+        NewValue = NewMin
+    else:
+        NewRange = (30 - 5)
+        NewValue = (((OldValue +2) * NewRange) / OldRange) + 5
+    return NewValue
 if __name__ == "__main__":
-    print(getDataClusterAge())
    # print( getDataClusterAge()[0])
    # print( getDataClusterAge()[1])
    # print( getDataClusterAge()[2])
+   print(getDataClusterTest())
 
-    print(getRegionsData()[0])
-    print(getRegionsData()[1])
-    print(getRegionsData()[2])
-    print(getRegionsData()[3])
-    getStatistiqueMonde()
-    print(clustering())
 
 
 

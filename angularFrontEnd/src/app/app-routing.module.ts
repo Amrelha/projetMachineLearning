@@ -4,13 +4,13 @@ import { VisualisationComponent } from './visualisation/visualisation.component'
 import { AnalyseSentimentComponent } from './analyse-sentiment/analyse-sentiment.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import {AcceuilCompoComponent} from "./acceuil-compo/acceuil-compo.component";
-import {PredictComponent} from "./predict/predict.component";
+import { ClusteringComponent } from './clustering/clustering.component';
 
 
 const routes: Routes = [
   {path:"visualisation", component:VisualisationComponent},
   {path:"sentimentAnalytics", component:AnalyseSentimentComponent},
-  {path: "predict", component:PredictComponent},
+  {path: "clustering", component:ClusteringComponent},
   {path:"", component:AcceuilCompoComponent}
 ];
 

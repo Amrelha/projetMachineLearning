@@ -21,6 +21,7 @@ import { GrapheVisualisationComponent } from './graphe-visualisation/graphe-visu
 import { VisualisationService } from './services/visualisation.service';
 import { AcceuilCompoComponent } from './acceuil-compo/acceuil-compo.component';
 import { PredictgraphComponent } from './predictgraph/predictgraph.component';
+import { ClusteringComponent } from './clustering/clustering.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PredictgraphComponent } from './predictgraph/predictgraph.component';
     ComparaisonComponent,
     GrapheVisualisationComponent,
     AcceuilCompoComponent,
-    PredictgraphComponent
+    PredictgraphComponent,
+    ClusteringComponent
   ],
   imports: [
     BrowserModule,

@@ -36,6 +36,8 @@ export class PredictgraphComponent implements OnInit {
         console.log(error); }
     );
   }
+
+  
   public bubbleChartOptions: ChartOptions = {
     responsive: true,
     scales: {
