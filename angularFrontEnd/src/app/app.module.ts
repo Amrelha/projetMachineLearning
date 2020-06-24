@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { VisualisationComponent } from './visualisation/visualisation.component';
-import { PredictComponent } from './predict/predict.component';
 import { AnalyseSentimentComponent } from './analyse-sentiment/analyse-sentiment.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -20,7 +19,6 @@ import {HttpModule} from "@angular/http";
 import { GrapheVisualisationComponent } from './graphe-visualisation/graphe-visualisation.component';
 import { VisualisationService } from './services/visualisation.service';
 import { AcceuilCompoComponent } from './acceuil-compo/acceuil-compo.component';
-import { PredictgraphComponent } from './predictgraph/predictgraph.component';
 import { ClusteringComponent } from './clustering/clustering.component';
 
 @NgModule({
@@ -28,12 +26,10 @@ import { ClusteringComponent } from './clustering/clustering.component';
     AppComponent,
     AccueilComponent,
     VisualisationComponent,
-    PredictComponent,
     AnalyseSentimentComponent,
     ComparaisonComponent,
     GrapheVisualisationComponent,
     AcceuilCompoComponent,
-    PredictgraphComponent,
     ClusteringComponent
   ],
   imports: [
