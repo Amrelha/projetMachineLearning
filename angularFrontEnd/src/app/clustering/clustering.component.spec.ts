@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PredictComponent } from './predict.component';
+import { ClusteringComponent } from './clustering.component';
 
-describe('PredictComponent', () => {
-  let component: PredictComponent;
-  let fixture: ComponentFixture<PredictComponent>;
+describe('ClusteringComponent', () => {
+  let component: ClusteringComponent;
+  let fixture: ComponentFixture<ClusteringComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PredictComponent ]
+      declarations: [ ClusteringComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PredictComponent);
+    fixture = TestBed.createComponent(ClusteringComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,9 +2,6 @@ from textblob import TextBlob
 import sys, tweepy
 from flask import Flask, jsonify
 
-
-
-
 consumerKey = "0qgsJ3g9PlQIufvBK8rw5DH4L"
 consumerSecret = "uQh0c7cOPeFKvcFNsr8XtZWRFy3IktbCzaRNHuYF9uA23Cu2zh"
 accessToken = "1256979550728343552-2NitGLeCCKbikqtPmDKIQH9mtRKBrR"

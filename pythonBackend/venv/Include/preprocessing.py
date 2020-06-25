@@ -18,13 +18,7 @@ urlEtat = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\cou
 datasetTest = pd.read_csv(urlTest)
 datasetEtat = pd.read_csv(urlEtat)
 
-# print("dataset Etat \n ",datasetEtat.head())
-# print("dataset Test \n",datasetTest.head())
-# print(datasetTest.info())
-# print(datasetEtat.info())
-# datasetTest = datasetTest.groupby(['Total tests']).sum()
-# print("dataset Test \n",datasetTest.head())
-# array = datasetTest.loc[:, "Total tests"]
+
 datasetTest = datasetTest[['Entity', 'Total tests']]
 datasetTest = datasetTest.rename(columns={'Entity':'Country'})
 datasetTest = datasetTest.groupby(['Country']).max()
@@ -40,27 +34,17 @@ x = data.loc[:, ['Confirmed', 'Recovered', 'Deaths']].values
 y = data.loc[:, ['Total tests']].values
 x1 = StandardScaler().fit_transform(x)
 
-for i in range(1, 12):
-    kmeans = KMeans(n_clusters=i, init='k-means++', random_state=42)
-    kmeans.fit(x)
-    wcss.append(kmeans.inertia_)
-# plt.figure(figsize=(10,5))
-# sns.lineplot(range(1, 12), wcss, marker='o', color='red')
-# plt.title('elbow methode')
-# plt.xlabel('Number of clusters')
-# plt.ylabel('WCSS')
-# plt.show() ##### 4
+
 
 kmeans = KMeans(n_clusters = 4, init = 'k-means++', random_state = 42)
 y_kmeans = kmeans.fit_predict(x)
-# print('swsws',y_kmeans)
+
 data = data.assign(cluster = y_kmeans+1)
 
 country_cluster = data.loc[:, ['Country', 'cluster']].values
-# print("***",data)
+
 mean_clusters = pd.DataFrame(round(data.groupby('cluster').mean(), 1))
-# print(mean_clusters)
-# print(data)
+
 def clustering():
     pca = PCA(n_components=2)
     principalComponents = pca.fit_transform(x1)
@@ -75,7 +59,7 @@ def clustering():
     lastData =newDataframe.assign(cluster = y_kmeans+1,country=data['Country'])
     dictdata = []
     for i in  range(len(lastData['country'].values)):
-        dictdata.append({"x" :float(normalisation(lastData['PC1'].values[i])),"y" :float(normalisation(lastData['PC2'].values[i])),"country" :lastData['country'].values[i],"cluster" :int(lastData['cluster'].values[i])})
+            dictdata.append({"x" :float(normalisation(lastData['PC1'].values[i])),"y" :float(normalisation(lastData['PC2'].values[i])),"country" :lastData['country'].values[i],"cluster" :int(lastData['cluster'].values[i])})
     return dictdata
 # plt.scatter(principalDataframe.PC1, principalDataframe.PC2)
 # plt.title('PC1 against PC2')

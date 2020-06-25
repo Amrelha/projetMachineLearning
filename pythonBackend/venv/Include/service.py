@@ -48,11 +48,19 @@ def getStatistiqueMonde():
     array = dataEx.getStatistiqueMonde()
     return jsonify({"totalCases": array[0], "death": array[1], "recovered": array[2]})
 
-@app.route('/predictions/testclusters')
+@app.route('/visualisation/clusterAge')
 @cross_origin()
-def getTestClusters():
-    array = clustering()
-    return jsonify(array)
+def getClusterAge():
+    array = dataEx.getDataClusterAge()
+    return jsonify({"countries": array[0].tolist(), "x": array[1].tolist(),"y":array[2].tolist(), "cluster": array[3].tolist()})
+
+@app.route('/visualisation/clusterTest')
+@cross_origin()
+def getClusterTest():
+    array = dataEx.getDataClusterTest()
+    return jsonify({"countries": array[0].tolist(), "x": array[1].tolist(),"y":array[2].tolist(), "cluster": array[3].tolist()})
+
+
 
 @app.route('/analysesentiment/covid19')
 @cross_origin()

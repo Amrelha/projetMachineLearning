@@ -13,7 +13,8 @@ datasetEtat = datasetEtat[['Country', 'Confirmed', 'Recovered', 'Deaths']]
 datasetEtat = datasetEtat.groupby(['Country']).max()
 
 datasetAge = pd.read_csv(urlAge)
-datasetAge = datasetAge[['Country (or dependency)', 'Med. Age']]
+datasetAge = datasetAge[['Country (or dependency)', 'Med. Age']
+
 datasetAge = datasetAge.rename(columns={'Country (or dependency)':'Country', 'Med. Age': 'AverageAge'})
 print("++++++++++++++")
 print(datasetAge.loc[:,'AverageAge'].values)
