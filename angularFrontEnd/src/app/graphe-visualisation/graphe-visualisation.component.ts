@@ -12,7 +12,7 @@ import {VisualisationService} from "../services/visualisation.service";
 })
 export class GrapheVisualisationComponent implements OnInit {
   public formGroup: FormGroup;
-  public lastUpdate = ""
+  public lastUpdate = "";
   country = "Morocco";
   totalCases: string;
   death: string;
@@ -73,7 +73,7 @@ export class GrapheVisualisationComponent implements OnInit {
   ngOnInit(): void {
     this.ngForm();
     this.loadData();
-    
+
   }
   onSubmit(){
     this.country = this.formGroup.value.country;

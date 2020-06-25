@@ -32,12 +32,12 @@ export class AcceuilCompoComponent implements OnInit {
 
 
         this.regions = data.regions;
-        this.update=data.update;
+        this.update = data.update;
 
         for (let i in data.affectedNum) {
           this.affectedNum.push(Number(data.affectedNum[i]));
         }
-        console.log(this.affectedNum);
+
         this.chartDatasets = [
           { data: this.affectedNum, label: 'Total cases' }
         ];
@@ -46,6 +46,7 @@ export class AcceuilCompoComponent implements OnInit {
       }, error => {
         console.log(error); }
     );
+    console.log(this.affectedNum[5]);
   }
   public chartType: string = 'bar';
   public chartDatasets: Array<any>;

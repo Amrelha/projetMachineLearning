@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 import dataExtraction as dataEx
 from flask_cors import CORS,cross_origin
 from  preprocessing import clustering
+from analyseSentiment import twitterDataExtaraction
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -52,6 +53,12 @@ def getStatistiqueMonde():
 def getTestClusters():
     array = clustering()
     return jsonify(array)
+
+@app.route('/analysesentiment/covid19')
+@cross_origin()
+def analyseSentiment():
+    array = twitterDataExtaraction()
+    return jsonify({"neutral": array[0], "negative": array[1], "positive": array[2]})
 
 if __name__ == "__main__":
     app.run(debug=True)
