@@ -59,6 +59,18 @@ def getClusterTest():
     array = dataEx.getDataClusterTest()
     return jsonify({"countries": array[0].tolist(), "x": array[1].tolist(),"y":array[2].tolist(), "cluster": array[3].tolist()})
 
+@app.route('/visualisation/ageClusterMean')
+@cross_origin()
+def getMeanClusterAge():
+    array = dataEx.getDataClusterAge()[4]
+    return jsonify({"meanClusters": array.tolist()})
+@app.route('/visualisation/testClusterMean')
+@cross_origin()
+def getMeanClusterTest():
+    array = dataEx.getDataClusterTest()[4]
+    return jsonify({"meanClusters": array.tolist()})
+
+
 
 
 if __name__ == "__main__":

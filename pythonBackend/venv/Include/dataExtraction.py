@@ -13,7 +13,7 @@ import numpy as np
 #url = r"C:\Users\lanfouf\Desktop\issamML\projetMachineLearning\Data\countries-aggregated.csv"
 url = r"C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
 urlAge = r"C:\Users\elham\Desktop\projetMachineLearning\Data\population_by_country_2020.csv"
-urlTest = r"C:/Users/elham/Desktop/S4/Maching learning/projet machine learning/full-list-total-tests-for-covid-19.csv"
+urlTest = r"C:\Users\elham\Desktop\projetMachineLearning\Data\full-list-total-tests-for-covid-19.csv"
 from  preprocessing import clustering
 #change the url
 

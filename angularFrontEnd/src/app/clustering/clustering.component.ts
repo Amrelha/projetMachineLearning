@@ -2,6 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { VisualisationService } from '../services/visualisation.service';
 import { Chart, ChartDataSets, ChartPoint } from 'chart.js';
 
+export interface AgeMeanClusterInterface {
+  cluster: number;
+  AverageAge: number;
+  Confirmed: number;
+  Recovered: number;
+  Deaths: number;
+}
+export interface TestMeanClusterInterface {
+  cluster: number;
+  totalTests: number;
+  Confirmed: number;
+  Recovered: number;
+  Deaths: number;
+}
+
 @Component({
   selector: 'app-clustering',
   templateUrl: './clustering.component.html',
@@ -10,12 +25,53 @@ import { Chart, ChartDataSets, ChartPoint } from 'chart.js';
 export class ClusteringComponent implements OnInit {
   public datasetAge:ChartDataSets[] = new Array();
   public datasetTest:ChartDataSets[] = new Array();
+  public meanClustersAge:Number[][] = new Array();
+  public tableAge:AgeMeanClusterInterface[] = new Array();
+  public tableTest:TestMeanClusterInterface[] = new Array();
+  public r:number = 10;
+
   constructor(private service: VisualisationService) { }
+
 
   ngOnInit(): void {
       this.ageClusterchart();
       this.testClusterchart();
+      this.service.getClusterMeanAge().subscribe(
+        data => {
+          for(let i=0;i<data['meanClusters'].length;i++){
+            this.tableAge.push({
+              cluster: i+1,
+              AverageAge: data['meanClusters'][i][0],
+              Confirmed: data['meanClusters'][i][1],
+              Recovered: data['meanClusters'][i][2],
+              Deaths: data['meanClusters'][i][3]
+            });
+          }
+          
+          console.log(this.tableAge);
+
+        }
+      );
+      this.service.getClusterMeanTest().subscribe(
+        data => {
+          for(let i=0;i<data['meanClusters'].length;i++){
+            this.tableTest.push({
+              cluster: i+1,
+              Confirmed: data['meanClusters'][i][0],
+              Recovered: data['meanClusters'][i][1],
+              Deaths: data['meanClusters'][i][2],
+              totalTests: data['meanClusters'][i][3],
+            });
+          }
+          
+          console.log(this.tableTest);
+
+        }
+      );
+
     }
+
+
 
 ageClusterchart(){
   this.service.getClusterAge().subscribe(
@@ -25,7 +81,7 @@ ageClusterchart(){
             this.datasetAge.push({
               backgroundColor: 'rgba(255, 0, 0, 0.4)',
               label: 'Cluster 1 : '+data['countries'][i],
-              data: [{x: data['x'][i], y: data['y'][i] ,r: 10}]
+              data: [{x: data['x'][i], y: data['y'][i] ,r: this.r}]
             })
             /* console.log("Cluster 1",data['countries'][i]) */
         }
@@ -33,7 +89,7 @@ ageClusterchart(){
             this.datasetAge.push({
               backgroundColor: 'rgba(205, 209, 128, 1)',
               label: 'Cluster 2 : '+data['countries'][i],
-              data: [{x: data['x'][i], y: data['y'][i] ,r: 10}]
+              data: [{x: data['x'][i], y: data['y'][i] ,r: this.r}]
             })
            /*  console.log("Cluster 2",data['countries'][i]) */
         }
@@ -41,7 +97,7 @@ ageClusterchart(){
             this.datasetAge.push({
               backgroundColor: 'rgba(128, 209, 149, 1)',
               label: 'Cluster 3 : '+data['countries'][i],
-              data: [{x: data['x'][i], y: data['y'][i] ,r: 10}]
+              data: [{x: data['x'][i], y: data['y'][i] ,r: this.r}]
             })
             /* console.log("Cluster 3",data['countries'][i]) */
         }
@@ -49,7 +105,7 @@ ageClusterchart(){
             this.datasetAge.push({
               backgroundColor: 'rgba(103, 79, 191, 1)',
               label: 'Cluster 4 : '+data['countries'][i],
-              data: [{x: data['x'][i], y: data['y'][i] ,r: 10}]
+              data: [{x: data['x'][i], y: data['y'][i] ,r: this.r}]
             })
             /* console.log("Cluster 4",data['countries'][i]) */
         }
@@ -57,7 +113,7 @@ ageClusterchart(){
             this.datasetAge.push({
               backgroundColor: 'rgba(202, 128, 209, 1)',
               label: 'Cluster 5 : '+data['countries'][i],
-              data: [{x: data['x'][i], y: data['y'][i] ,r: 10}]
+              data: [{x: data['x'][i], y: data['y'][i] ,r: this.r}]
             })
            /*  console.log("Cluster 5",data['countries'][i]) */
         }
@@ -103,7 +159,7 @@ testClusterchart(){
             this.datasetTest.push({
               backgroundColor: 'rgba(255, 0, 0, 0.4)',
               label: 'Cluster 1 : '+data['countries'][i],
-              data: [{x: data['x'][i], y: data['y'][i] ,r: 10}]
+              data: [{x: data['x'][i], y: data['y'][i] ,r: this.r}]
             })
             /* console.log("Cluster 1",data['countries'][i]) */
         }
@@ -111,7 +167,7 @@ testClusterchart(){
             this.datasetTest.push({
               backgroundColor: 'rgba(205, 209, 128, 1)',
               label: 'Cluster 2 : '+data['countries'][i],
-              data: [{x: data['x'][i], y: data['y'][i] ,r: 10}]
+              data: [{x: data['x'][i], y: data['y'][i] ,r: this.r}]
             })
            /*  console.log("Cluster 2",data['countries'][i]) */
         }
@@ -119,7 +175,7 @@ testClusterchart(){
             this.datasetTest.push({
               backgroundColor: 'rgba(128, 209, 149, 1)',
               label: 'Cluster 3 : '+data['countries'][i],
-              data: [{x: data['x'][i], y: data['y'][i] ,r: 10}]
+              data: [{x: data['x'][i], y: data['y'][i] ,r: this.r}]
             })
             /* console.log("Cluster 3",data['countries'][i]) */
         }
@@ -127,7 +183,7 @@ testClusterchart(){
             this.datasetTest.push({
               backgroundColor: 'rgba(103, 79, 191, 1)',
               label: 'Cluster 4 : '+data['countries'][i],
-              data: [{x: data['x'][i], y: data['y'][i] ,r: 10}]
+              data: [{x: data['x'][i], y: data['y'][i] ,r: this.r}]
             })
             /* console.log("Cluster 4",data['countries'][i]) */
         }

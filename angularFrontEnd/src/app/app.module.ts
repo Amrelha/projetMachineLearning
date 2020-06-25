@@ -20,7 +20,7 @@ import { GrapheVisualisationComponent } from './graphe-visualisation/graphe-visu
 import { VisualisationService } from './services/visualisation.service';
 import { AcceuilCompoComponent } from './acceuil-compo/acceuil-compo.component';
 import { ClusteringComponent } from './clustering/clustering.component';
-
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,8 @@ import { ClusteringComponent } from './clustering/clustering.component';
     ChartsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    MatTableModule
   ],
   providers: [VisualisationService],
   bootstrap: [AppComponent]
