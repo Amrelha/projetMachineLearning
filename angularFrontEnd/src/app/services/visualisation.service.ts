@@ -41,5 +41,10 @@ export class VisualisationService {
   analyseSentiment(){
     return this.http.get('http://127.0.0.1:5000/analysesentiment/covid19').pipe(map(resp => resp.json()));
   }
-
+  getClusterMeanAge(){
+    return this.http.get('http://127.0.0.1:5000/visualisation/ageClusterMean').pipe(map(resp => resp.json()));
+  }
+  getClusterMeanTest(){
+    return this.http.get('http://127.0.0.1:5000/visualisation/testClusterMean').pipe(map(resp => resp.json()));
+  }
 }

@@ -15,10 +15,7 @@ urlTest = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\ful
 
 # url = r"C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
 # urlAge = r"C:\Users\elham\Desktop\projetMachineLearning\Data\population_by_country_2020.csv"
-# urlTest = r"C:/Users/elham/Desktop/S4/Maching learning/projet machine learning/full-list-total-tests-for-covid-19.csv"
-
-#change the url
-
+# urlTest = r"C:\Users\elham\Desktop\projetMachineLearning\Data\full-list-total-tests-for-covid-19.csv"
 
 
 dataset = pd.read_csv(url)
