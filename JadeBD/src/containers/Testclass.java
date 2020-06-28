@@ -9,10 +9,10 @@ public class Testclass {
 		result= result.replaceAll("\\}", "");
 		result=result.replaceAll("\"", "");
 		
-		String [] tablo = result.split(":|,");
+		String [] table = result.split(":|,");
 		
-		for (int i = 0; i < tablo.length; i++) {
-			System.out.println(tablo[i]);
+		for (int i = 0; i < table.length; i++) {
+			System.out.println(table[i]);
 			
 		}
 

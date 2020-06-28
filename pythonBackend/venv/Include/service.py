@@ -3,8 +3,12 @@ import dataExtraction as dataEx
 from flask_cors import CORS,cross_origin
 from  preprocessing import clustering
 from analyseSentiment import twitterDataExtaraction
+from flask_pymongo import PyMongo
 
 app = Flask(__name__)
+app.config["MONGO_URI"] = "mongodb://localhost:27017/scrapingDB"
+mongo = PyMongo(app)
+db = mongo.db
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 # Visualisation service part
 
@@ -73,12 +77,21 @@ def getMeanClusterTest():
 
 
 
-
-@app.route('/analysesentiment/covid19')
+@app.route("/analysesentiment/covid19/", defaults={'tags': '#covid19','tags2': ''})
+@app.route('/analysesentiment/covid19/<string:tags>/<string:tags2>')
 @cross_origin()
-def analyseSentiment():
-    array = twitterDataExtaraction()
+def analyseSentiment(tags,tags2):
+    array = twitterDataExtaraction(tags,tags2)
     return jsonify({"neutral": array[0], "negative": array[1], "positive": array[2]})
+
+
+@app.route('/mongodb/test')
+@cross_origin()
+def getTest():
+    cursor = db.nature.find().skip(db.nature.count() - 1)
+    print(cursor[0])
+    return 'hello'
+
 
 if __name__ == "__main__":
     app.run(debug=True)
