@@ -27,6 +27,21 @@ public class NatureScrapingAgent extends Agent{
 	protected void setup() {
 		ParallelBehaviour parallelBehaviour = new ParallelBehaviour();
 		addBehaviour(parallelBehaviour);
+		parallelBehaviour.addSubBehaviour(new OneShotBehaviour() {
+			
+			@Override
+			public void action() {
+				Client client = ClientBuilder.newClient();
+				WebTarget target = client.target("http://127.0.0.1:5000/analysesentiment/covid19/covid19/nature");
+				String result = target.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(String.class);
+				ACLMessage aclMessage = new ACLMessage(ACLMessage.INFORM);
+				aclMessage.addReceiver(new AID("DbRecoder", AID.ISLOCALNAME));
+				aclMessage.setContent(result);					
+				aclMessage.setOntology("nature");
+				send(aclMessage);
+				
+			}
+		});
 		parallelBehaviour.addSubBehaviour(new TickerBehaviour(this,300000) {
 			
 			@Override

@@ -85,12 +85,31 @@ def analyseSentiment(tags,tags2):
     return jsonify({"neutral": array[0], "negative": array[1], "positive": array[2]})
 
 
-@app.route('/mongodb/test')
+@app.route('/mongodb/nature')
 @cross_origin()
-def getTest():
-    cursor = db.nature.find().skip(db.nature.count() - 1)
-    print(cursor[0])
-    return 'hello'
+def getNature():
+    cursor = db.nature.find().skip(db.nature.count_documents({}) - 1)
+    return jsonify({"neutral": cursor[0]['neutral'], "negative": cursor[0]['negative'], "positive": cursor[0]['positive']})
+
+@app.route('/mongodb/economy')
+@cross_origin()
+def getEconomy():
+    cursor = db.economy.find().skip(db.economy.count_documents({}) - 1)
+    return jsonify({"neutral": cursor[0]['neutral'], "negative": cursor[0]['negative'], "positive": cursor[0]['positive']})
+
+
+@app.route('/mongodb/mentalhealth')
+@cross_origin()
+def getMentalhealth():
+    cursor = db.mentalhealth.find().skip(db.mentalhealth.count_documents({}) - 1)
+    return jsonify({"neutral": cursor[0]['neutral'], "negative": cursor[0]['negative'], "positive": cursor[0]['positive']})
+
+
+@app.route('/mongodb/politics')
+@cross_origin()
+def getPolitics():
+    cursor = db.politics.find().skip(db.politics.count_documents({}) - 1)
+    return jsonify({"neutral": cursor[0]['neutral'], "negative": cursor[0]['negative'], "positive": cursor[0]['positive']})
 
 
 if __name__ == "__main__":
