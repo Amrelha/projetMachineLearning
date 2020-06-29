@@ -38,8 +38,17 @@ export class VisualisationService {
   getClusterTest(){
     return this.http.get('http://127.0.0.1:5000/visualisation/clusterTest').pipe(map(resp => resp.json()));
   }
-  analyseSentiment(){
-    return this.http.get('http://127.0.0.1:5000/analysesentiment/covid19').pipe(map(resp => resp.json()));
+  analyseSentimentNature(){
+    return this.http.get('http://127.0.0.1:5000/mongodb/nature').pipe(map(resp => resp.json()));
+  }
+  analyseSentimentPolitics(){
+    return this.http.get('http://127.0.0.1:5000/mongodb/politics').pipe(map(resp => resp.json()));
+  }
+  analyseSentimentMentalhealth(){
+    return this.http.get('http://127.0.0.1:5000/mongodb/mentalhealth').pipe(map(resp => resp.json()));
+  }
+  analyseSentimentEconomy(){
+    return this.http.get('http://127.0.0.1:5000/mongodb/economy').pipe(map(resp => resp.json()));
   }
   getClusterMeanAge(){
     return this.http.get('http://127.0.0.1:5000/visualisation/ageClusterMean').pipe(map(resp => resp.json()));
