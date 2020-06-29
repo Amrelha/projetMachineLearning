@@ -1,59 +1,4 @@
 
-<!--<div >-->
-<!--    <img class="image"  [src]=image >-->
-<!--</div>-->
-<!--&lt;!&ndash;Navbar&ndash;&gt;-->
-<!--<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light blue-grey lighten-5 fixed">-->
-
-<!--    &lt;!&ndash; Navbar brand &ndash;&gt;-->
-<!--    <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>-->
-
-<!--    &lt;!&ndash; Collapsible content &ndash;&gt;-->
-<!--    <links>-->
-
-<!--        &lt;!&ndash; Links &ndash;&gt;-->
-<!--        <ul class="navbar-nav mr-auto">-->
-<!--            <li class="nav-item active">-->
-<!--                <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link waves-light" mdbWavesEffect>Features</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>-->
-<!--            </li>-->
-
-<!--            &lt;!&ndash; Dropdown &ndash;&gt;-->
-<!--            <li class="nav-item dropdown" dropdown>-->
-<!--                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>-->
-<!--                Basic dropdown<span class="caret"></span></a>-->
-<!--                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">-->
-<!--                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>-->
-<!--                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>-->
-<!--                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>-->
-<!--                    <div class="divider dropdown-divider"></div>-->
-<!--                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>-->
-<!--                </div>-->
-<!--            </li>-->
-
-<!--        </ul>-->
-<!--        &lt;!&ndash; Links &ndash;&gt;-->
-
-<!--&lt;!&ndash; Search form &ndash;&gt;-->
-<!--        <form class="form-inline waves-light" mdbWavesEffect>-->
-<!--            <div class="md-form my-0">-->
-<!--                <input class="form-control mr-sm-2" type="text" placeholder="Search">-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </links>-->
-<!--    &lt;!&ndash; Collapsible content &ndash;&gt;-->
-
-<!--</mdb-navbar>-->
-<!--&lt;!&ndash;/.Navbar&ndash;&gt;-->
-<!--&lt;!&ndash; <app-visualisation></app-visualisation> &ndash;&gt;-->
-<!--<app-comparaison></app-comparaison>-->
-<!--<app-graphe-visualisation></app-graphe-visualisation>-->
-<!--&lt;!&ndash;<app-comparaison></app-comparaison>&ndash;&gt;-->
 
 <div >
     <img class="image"  [src]=image >
@@ -79,5 +24,65 @@
 <!--<app-acceuil-compo></app-acceuil-compo>-->
 
 <!-- <app-visualisation></app-visualisation> -->
-<router-outlet></router-outlet>
+<div class="body">
+    <router-outlet></router-outlet>
+</div>
+
 <!-- <app-clustering></app-clustering> -->
+
+<!-- <div class="footer">
+    <div class="content"></div>
+    <div class="copyright">&copy; Designed by Amr EL HAMMADI & Issam L'ANFOUF</div>
+</div> -->
+<!-- Footer -->
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6 class="h6Font">About</h6>
+          <p class="text-justify">CORONASTAT is a web site that analyse covid19 data of every country using different types of graphes, and algorithemes like K-means sentiment analytics.</p>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6 class="h6Font">Categories</h6>
+          <ul class="footer-links">
+            <li><a href="">Info</a></li>
+            <li><a href="">Visualisation</a></li>
+            <li><a href="">Clustering</a></li>
+            <li><a href="">Sentiment analytics</a></li>
+          
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6 class="h6Font">Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="http://scanfcode.com/about/">About Us</a></li>
+            <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+            <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+            <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2020 Created by Amr EL HAMMADI & ISSAM L'ANFOUF.
+          </p>
+        </div>
+
+   <!--      <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i><img src="https://img.icons8.com/material/24/000000/facebook--v1.png"/></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+          </ul>
+        </div> -->
+      </div>
+    </div>
+</footer>

@@ -1,7 +1,6 @@
 from flask import Flask, jsonify
 import dataExtraction as dataEx
 from flask_cors import CORS,cross_origin
-from  preprocessing import clustering
 from analyseSentiment import twitterDataExtaraction
 from flask_pymongo import PyMongo
 

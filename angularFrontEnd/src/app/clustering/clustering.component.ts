@@ -148,7 +148,7 @@ ageClusterchart(){
   setTimeout(() => {
     char.data.datasets = this.datasetAge;
     char.update();
-  }, 1000);
+  }, 2000);
 }
 
 testClusterchart(){
@@ -218,7 +218,7 @@ testClusterchart(){
      setTimeout(() => {
        char.data.datasets = this.datasetTest;
        char.update();
-     }, 1000);
+     }, 2000);
 
 
 }

@@ -9,13 +9,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 import numpy as np
 #change the url
-url = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\countries-aggregated.csv"
-urlAge = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\population_by_country_2020.csv"
-urlTest = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\full-list-total-tests-for-covid-19.csv"
+# url = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\countries-aggregated.csv"
+# urlAge = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\population_by_country_2020.csv"
+# urlTest = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\full-list-total-tests-for-covid-19.csv"
 
-# url = r"C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
-# urlAge = r"C:\Users\elham\Desktop\projetMachineLearning\Data\population_by_country_2020.csv"
-# urlTest = r"C:\Users\elham\Desktop\projetMachineLearning\Data\full-list-total-tests-for-covid-19.csv"
+url = r"C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
+urlAge = r"C:\Users\elham\Desktop\projetMachineLearning\Data\population_by_country_2020.csv"
+urlTest = r"C:\Users\elham\Desktop\projetMachineLearning\Data\full-list-total-tests-for-covid-19.csv"
 
 
 dataset = pd.read_csv(url)
