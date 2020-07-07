@@ -19,9 +19,6 @@ import javax.ws.rs.client.WebTarget;
 
 
 
-
-
-
 public class NatureScrapingAgent extends Agent{
 	@Override
 	protected void setup() {

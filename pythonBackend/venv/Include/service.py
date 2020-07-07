@@ -61,12 +61,14 @@ def getClusterAge():
 @cross_origin()
 def getClusterTest():
     array = dataEx.getDataClusterTest()
+    print(array)
     return jsonify({"countries": array[0].tolist(), "x": array[1].tolist(),"y":array[2].tolist(), "cluster": array[3].tolist()})
 
 @app.route('/visualisation/ageClusterMean')
 @cross_origin()
 def getMeanClusterAge():
     array = dataEx.getDataClusterAge()[4]
+    print(array)
     return jsonify({"meanClusters": array.tolist()})
 @app.route('/visualisation/testClusterMean')
 @cross_origin()
@@ -110,6 +112,25 @@ def getPolitics():
     cursor = db.politics.find().skip(db.politics.count_documents({}) - 1)
     return jsonify({"neutral": cursor[0]['neutral'], "negative": cursor[0]['negative'], "positive": cursor[0]['positive']})
 
+@app.route('/visualisation/clusteringAge')
+@cross_origin()
+def getClusteringAge():
+    app.config["MONGO_URI"] = "mongodb://localhost:27017/ClusteringDB"
+    mongo = PyMongo(app)
+    db = mongo.db
+    array = db.clusteringAge.find().skip(db.clusteringAge.count_documents({}) - 1)
+    return jsonify({"countries": array[0]['countries'], "x": array[0]['x'],"y":array[0]['y'], "cluster": array[0]['cluster']})
+
+
+@app.route('/visualisation/clusteringTest')
+@cross_origin()
+def getClusteringTest():
+    app.config["MONGO_URI"] = "mongodb://localhost:27017/ClusteringDB"
+    mongo = PyMongo(app)
+    db = mongo.db
+    array = db.clusteringTest.find().skip(db.clusteringTest.count_documents({}) - 1)
+    return jsonify(
+        {"countries": array[0]['countries'], "x": array[0]['x'], "y": array[0]['y'], "cluster": array[0]['cluster']})
 
 if __name__ == "__main__":
     app.run(debug=True)

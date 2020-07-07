@@ -39,11 +39,30 @@ https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
         <artifactId>mongodb-driver-legacy</artifactId>
         <version>4.0.4</version>
     </dependency>
-    <dependency>
+<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+<dependency>
     <groupId>org.mongodb</groupId>
     <artifactId>mongo-java-driver</artifactId>
-    <version>3.4.1</version>
+    <version>3.12.5</version>
 </dependency>
+
+
+
+<!-- https://mvnrepository.com/artifact/org.mongodb/bson -->
+<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>bson</artifactId>
+    <version>4.1.0-beta2</version>
+</dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mongojack/mongojack -->
+<dependency>
+    <groupId>org.mongojack</groupId>
+    <artifactId>mongojack</artifactId>
+    <version>4.0.2</version>
+</dependency>
+
+
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>

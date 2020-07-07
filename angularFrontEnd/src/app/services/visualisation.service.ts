@@ -33,10 +33,10 @@ export class VisualisationService {
     return this.http.get('http://127.0.0.1:5000/visualisation/regionsData').pipe(map(resp => resp.json()));
   }
   getClusterAge(){
-    return this.http.get('http://127.0.0.1:5000/visualisation/clusterAge').pipe(map(resp => resp.json()));
+    return this.http.get('http://127.0.0.1:5000/visualisation/clusteringAge').pipe(map(resp => resp.json()));
   }
   getClusterTest(){
-    return this.http.get('http://127.0.0.1:5000/visualisation/clusterTest').pipe(map(resp => resp.json()));
+    return this.http.get('http://127.0.0.1:5000/visualisation/clusteringTest').pipe(map(resp => resp.json()));
   }
   analyseSentimentNature(){
     return this.http.get('http://127.0.0.1:5000/mongodb/nature').pipe(map(resp => resp.json()));
