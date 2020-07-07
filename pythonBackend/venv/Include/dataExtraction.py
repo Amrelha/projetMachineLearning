@@ -13,11 +13,13 @@ import numpy as np
 # urlAge = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\population_by_country_2020.csv"
 # urlTest = r"C:\Users\lanfouf\Desktop\issamLanfouf\projetMachineLearning\Data\full-list-total-tests-for-covid-19.csv"
 
-url = r"C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
-urlAge = r"C:\Users\elham\Desktop\projetMachineLearning\Data\population_by_country_2020.csv"
-urlTest = r"C:\Users\elham\Desktop\projetMachineLearning\Data\full-list-total-tests-for-covid-19.csv"
+#url = r"C:\Users\elham\Desktop\projetMachineLearning\Data\countries-aggregated.csv"
+#urlAge = r"C:\Users\elham\Desktop\projetMachineLearning\Data\population_by_country_2020.csv"
+#urlTest = r"C:\Users\elham\Desktop\projetMachineLearning\Data\full-list-total-tests-for-covid-19.csv"
 
-
+url = "https://raw.githubusercontent.com/Amrelha/projetMachineLearning/master/Data/countries-aggregated.csv"
+urlAge = "https://raw.githubusercontent.com/Amrelha/projetMachineLearning/master/Data/population_by_country_2020.csv"
+urlTest = "https://raw.githubusercontent.com/Amrelha/projetMachineLearning/master/Data/full-list-total-tests-for-covid-19.csv"
 dataset = pd.read_csv(url)
 datasetAge = pd.read_csv(urlAge)
 datasetTest = pd.read_csv(urlTest)
